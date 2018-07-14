@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<h:head>
+		<h:outputStylesheet name="Css.css" library="css" />
+		<link href='https://fonts.googleapis.com/css?family=Jaldi'
+			rel='stylesheet'></link>
+		<script language="javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script language="javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script language="javascript" src="scripts.js"></script>
+		<link rel="stylesheet"
+			href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css"
+			type="text/css" media="all" />
+
+	</h:head>
+	<h:body>
+
+		<h:form>
+			<h1 style="margin-top: 0">Envío de correo Inspector</h1>
+			<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+				<h:column>
+					<p:outputLabel for="console" value="Seleccione:" />
+				</h:column>
+				<h:column>
+					<p:selectOneRadio id="console" value="#{radioView.console}">
+						<f:selectItem itemLabel="Todos los alumnos" itemValue="Xbox One" />
+						<f:selectItem itemLabel="Todos los docentes" itemValue="Xbox One" />
+					</p:selectOneRadio>
+				</h:column>
+				<h:column>
+					<h3 class="curso">Curso:</h3>
+					<h:outputText>curso</h:outputText>
+				</h:column>
+			</h:panelGrid>
+		</h:form>
+		<h:form class="borde">
+			<h:panelGrid columns="6" style="margin-bottom:0px" cellpadding="2">
+				<h:column>
+					<h3>Asunto:</h3>
+				</h:column>
+				<h:column>
+					<h:inputText name="asunto">asunto</h:inputText>
+				</h:column>
+				<h:column>
+					<h2 class="componer">&nbsp;&nbsp;&nbsp;Componer
+						Correo&nbsp;&nbsp;&nbsp;</h2>
+				</h:column>
+				<h:column>
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+				</h:column>
+				<h:column>
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+				</h:column>
+				<h:column>
+					<p:notificationBar position="top" effect="slide" styleClass="top"
+						widgetVar="bar">
+						<h:outputText
+							value="Para operar este sistema de correo, usted debe, en primer lugar, crear un asunto, luego esrcribir
+    el correo, seleccionar una persona o varias desde el menú a su derecha, o bien, seleccionar el botón 'Todos los Alumnos'
+     o 'Todos los Docentes', para enviar un correo masivo, tras lo cual debe presionar el botón 
+     'Enviar'. No olvide presionar 'Ocultar Ayuda' para salir."
+							style="font-size:18px;" />
+					</p:notificationBar>
+					<p:commandButton value="Mostrar Ayuda" onclick="PF('bar').show()"
+						type="button" icon="ui-icon-arrow-1-s" />
+					<p:commandButton value="Ocultar Ayuda" onclick="PF('bar').hide()"
+						type="button" icon="ui-icon-arrow-1-n" />
+				</h:column>
+
+			</h:panelGrid>
+			<h:panelGrid columns="2" style="margin-bottom:0px" cellpadding="2">
+				<h:column>
+					<p style="margin-top: 0">&nbsp;</p>
+					<p:textEditor class="editor" widgetVar="editor1"
+						value="#{editorView.text}" height="200" />
+				</h:column>
+				<h:column>
+					<p style="margin-top: 0">&nbsp;</p>
+					<ui:include src="components/many.xhtml"
+						rendered="#{eq user.role 'admin'}">
+					</ui:include>
+				</h:column>
+			</h:panelGrid>
+		</h:form>
+		<h:form>
+			<p:commandButton value="Enviar" update="display"
+				oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+			<p:commandButton value="Limpiar" type="button"
+				onclick="PF('editor1').clear();" icon="ui-icon-close" />
+
+			<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+				hideEffect="fade">
+				<p:outputPanel id="display">
+					<h3 style="margin-top: 0"></h3>
+					<h:outputText value="#{editorView.text}" escape="false" />
+					<h:outputText value="asunto" escape="false" />
+
+				</p:outputPanel>
+			</p:dialog>
+
+		</h:form>
+
+	</h:body>
+</f:view>
+
+</html>

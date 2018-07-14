@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+/* 
+    Created on : 07-06-2018, 22:36:59
+    Author     : fmoya
+*/
+
+.email {
+    width: 300px;
+    border: 2px solid blue;
+    padding: 25px;
+    margin: 25px;
+    margin: 1vh;
+    font-size: 15px;
+    font-family: fantasy;
+    background-color: aliceblue;
+    float: left;
+}
+
+.componer {
+    float: left;
+}
+
+.curso {
+    float: left;
+}
+
+body {
+    background-color: #C2DDF4;
+    font-weight: lighter;
+    font-family: 'Jaldi';
+    font-size: 15px;
+}
+
+.borde {
+    border-color: whitesmoke;
+    border-style: groove;
+    width: 1000px;
+}
+
+#container {
+    width: 300px;
+    background-color: whitesmoke;
+    margin: auto;
+    background-position: right;
+}
+
+#clear {
+    clear: both;
+}
+
+.advanced {
+    font-size: smaller;
+}
+
+.editor {
+    background-color: whitesmoke;
+}

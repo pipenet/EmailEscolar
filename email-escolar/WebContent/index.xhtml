@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mdjnm="http://mojarra.dev.java.net/mojarra_ext"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<title>Main</title>
+	<h:outputStylesheet name="Css.css" library="css" />
+	<h:outputScript name="scripts.js" library="js" />
+</h:head>
+<p:tabView>
+	<p:tab title="Colegio">
+		<h:panelGrid cellpadding="10">
+		</h:panelGrid>
+		<h:form class="email">
+			<p:panel header="Email Escolar">
+				<p:messages>
+					<p>Para ingresar, debe tener correo y clave institucional.</p>
+				</p:messages>
+				<h:panelGrid id="grid" columns="1" cellpadding="3">
+					<p:outputLabel for="email" value="E-mail" />
+					<p:inputText id="email" value="#{mainBean.usuario.user}"
+						validatorMessage="Email no válido.">
+						<f:validateRequired />
+						<f:validateRegex
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|cl)" />
+					</p:inputText>
+					<p:message for="email" />
+					<p:outputLabel for="password" value="Contraseña" />
+					<h:inputSecret id="password" value="#{mainBean.usuario.password}"
+						validatorMessage="Password no válida">
+						<f:validateRequired />
+					</h:inputSecret>
+					<p:commandButton value="Ingresar" action="#{mainBean.login}"
+						process="@form" update="@form" />
+					<h:message for="password" style="color:red" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</p:tab>
+	<p:tab title="Cursos">
+		<h:panelGrid columns="2" cellpadding="10">
+			<h3>IFrame</h3>
+			<p:lightBox iframe="true" id="lighbox1">
+				<h:outputLink
+					value="http://localhost:8080/email-escolar/profesor.xhtml"
+					title="Profesor">
+					<h:outputText value="Correo Profesor" />
+				</h:outputLink>
+			</p:lightBox>
+			<h3>IFrame</h3>
+			<p:lightBox iframe="true" id="lighbox2">
+				<h:outputLink
+					value="http://localhost:8080/email-escolar/inspector.xhtml"
+					title="Inspector">
+					<h:outputText value="Correo Inspector" />
+				</h:outputLink>
+			</p:lightBox>
+			<h3>IFrame</h3>
+			<p:lightBox iframe="true" id="lighbox3">
+				<h:outputLink
+					value="http://localhost:8080/email-escolar/director.xhtml"
+					title="Director">
+					<h:outputText value="Correo Director" />
+				</h:outputLink>
+			</p:lightBox>
+
+		</h:panelGrid>
+	</p:tab>
+	<p:tab title="Contacto">
+
+
+	</p:tab>
+</p:tabView>
+
+</html>
+
